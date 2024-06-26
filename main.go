@@ -4,6 +4,7 @@ import (
 	"awesomeProject/controllers"
 	"awesomeProject/initializers"
 	"awesomeProject/middlewares"
+	"awesomeProject/services"
 	"github.com/gin-gonic/gin"
 )
 
@@ -11,6 +12,7 @@ func init() {
 	initializers.LoadEnvVariables()
 	initializers.ConnectToDb()
 	initializers.SyncDatabase()
+	services.Initialize()
 }
 
 func main() {
@@ -25,6 +27,10 @@ func main() {
 	r.POST("/login", controllers.Login)
 
 	r.POST("/user", middlewares.RequireAuth, controllers.GetUser)
+
+	r.POST("/gamesHistory", middlewares.RequireAuth, controllers.GetGames)
+
+	r.POST("/createGame", middlewares.RequireAuth, controllers.CreateGame)
 
 	r.Run()
 }
