@@ -12,6 +12,7 @@ func NewRouter() *http.ServeMux {
 	mux.HandleFunc("/logout", handlers.LogoutHandler)
 	mux.HandleFunc("/signup", handlers.SignUpHandler)
 	mux.HandleFunc("/user", AuthMiddleware(handlers.GetUserHandler))
+	mux.HandleFunc("/createGame", AuthMiddleware(handlers.CreateGameHandler))
 
 	return mux
 }
