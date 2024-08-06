@@ -39,10 +39,13 @@ func main() {
 
 	// Set up routes
 	router := httpInterfaces.NewRouter()
+
+	corsRouter := httpInterfaces.CORSMiddleware(router)
+
 	// Start the server
 	serverAddr := cfg.ServerAddress
 	log.Printf("Starting server on %s", serverAddr)
-	if err := http.ListenAndServe(serverAddr, router); err != nil {
+	if err := http.ListenAndServe(serverAddr, corsRouter); err != nil {
 		log.Fatalf("could not start server: %v", err)
 	}
 }
