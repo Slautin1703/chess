@@ -1,14 +1,12 @@
 package main
 
 import (
-	"awesomeProject/db"
-	"awesomeProject/internal/handler"
+	"awesomeProject/internal/config"
+	db2 "awesomeProject/internal/infrastructure/db"
+	httpInterfaces "awesomeProject/internal/interfaces/http"
 	"database/sql"
 	"log"
 	"net/http"
-
-	"awesomeProject/internal/config"
-	"github.com/gorilla/mux"
 )
 
 func main() {
@@ -19,14 +17,14 @@ func main() {
 	}
 
 	// Initialize MongoDB
-	mongoDB, err := db.ConnectToMongoDB(cfg.MongoURI)
+	mongoDB, err := db2.ConnectToMongoDB(cfg.MongoURI)
 	if err != nil {
 		log.Fatalf("could not connect to MongoDB: %v", err)
 	}
 	defer mongoDB.Disconnect()
 
 	// Initialize database connection
-	pgDB, err := db.ConnectToPostgres(cfg.DatabaseURL)
+	pgDB, err := db2.ConnectToPostgres(cfg.DatabaseURL)
 	if err != nil {
 		log.Fatalf("could not connect to database: %v", err)
 	}
@@ -37,36 +35,14 @@ func main() {
 		}
 	}(pgDB)
 
-	db.RunPostgresMigrations(cfg.DatabaseURL)
+	db2.RunPostgresMigrations(cfg.DatabaseURL)
 
-	// Set up repository
-	//userRepo := repository.NewUserRepository(db)
-	//gameRepo := repository.NewGameRepository(db)
-	//
-	//// Set up services
-	//userService := service.NewUserService(userRepo)
-	//gameService := service.NewGameService(gameRepo)
-	//
-	//// Set up handlers
-	//userHandler := handler.NewUserHandler(userService)
-	//gameHandler := handler.NewGameHandler(gameService)
-
-	// Create a new router
-	r := mux.NewRouter()
-
-	r.HandleFunc("/", handler.HelloHandler).Methods("GET")
-
-	// Define routes
-	//r.HandleFunc("/signup", userHandler.SignUp).Methods("POST")
-	//r.HandleFunc("/login", userHandler.Login).Methods("POST")
-	//r.HandleFunc("/user", middleware.RequireAuth(userHandler.GetUser)).Methods("GET")
-	//r.HandleFunc("/gamesHistory", middleware.RequireAuth(gameHandler.GetGames)).Methods("GET")
-	//r.HandleFunc("/createGame", middleware.RequireAuth(gameHandler.CreateGame)).Methods("POST")
-
+	// Set up routes
+	router := httpInterfaces.NewRouter()
 	// Start the server
 	serverAddr := cfg.ServerAddress
 	log.Printf("Starting server on %s", serverAddr)
-	if err := http.ListenAndServe(serverAddr, r); err != nil {
+	if err := http.ListenAndServe(serverAddr, router); err != nil {
 		log.Fatalf("could not start server: %v", err)
 	}
 }

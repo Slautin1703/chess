@@ -9,18 +9,21 @@ import (
 	"log"
 )
 
+var DB *sql.DB
+
 func ConnectToPostgres(dsn string) (*sql.DB, error) {
-	db, err := sql.Open("postgres", dsn)
+	var err error
+	DB, err = sql.Open("postgres", dsn)
 	if err != nil {
 		return nil, err
 	}
 
-	if err := db.Ping(); err != nil {
+	if err := DB.Ping(); err != nil {
 		return nil, err
 	}
 
 	log.Println("Connected to database")
-	return db, nil
+	return DB, nil
 }
 
 type MongoDB struct {

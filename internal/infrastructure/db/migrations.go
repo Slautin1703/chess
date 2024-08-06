@@ -12,9 +12,10 @@ func RunPostgresMigrations(databaseURL string) {
 
 	// Create a new migrate instance
 	m, err := migrate.New(
-		"file://db/migrations",
+		"file://migrations",
 		databaseURL,
 	)
+
 	if err != nil {
 		log.Fatalf("Failed to create migrate instance: %v", err)
 	}
