@@ -4,5 +4,6 @@ CREATE TABLE users (
                        username VARCHAR(50) NOT NULL,
                        email VARCHAR(255) UNIQUE NOT NULL,
                        password varchar(255) NOT NULl,
+                       rating INT DEFAULT 500,
                        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

@@ -1,15 +1,15 @@
 package main
 
 import (
-	db2 "awesomeProject/internal/infrastructure/db"
-	"awesomeProject/internal/infrastructure/redis"
-	httpInterfaces "awesomeProject/internal/interfaces/http"
-	"awesomeProject/internal/usecases"
-	"awesomeProject/shared/config"
 	"database/sql"
 	"fmt"
 	"log"
 	"net/http"
+	"user-service/common/config"
+	db2 "user-service/internal/infrastructure/db"
+	"user-service/internal/infrastructure/redis"
+	httpInterfaces "user-service/internal/interfaces/http"
+	"user-service/internal/usecases"
 )
 
 func main() {
