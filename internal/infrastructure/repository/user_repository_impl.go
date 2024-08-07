@@ -1,10 +1,10 @@
 package repository
 
 import (
-	"awesomeProject/internal/domain/interfaces"
-	"awesomeProject/internal/domain/models"
-	"awesomeProject/internal/infrastructure/db"
 	"database/sql"
+	"github.com/Slautin1703/games/internal/domain/interfaces"
+	"github.com/Slautin1703/games/internal/domain/models"
+	"github.com/Slautin1703/games/internal/infrastructure/db"
 )
 
 type UserRepositoryImpl struct{}

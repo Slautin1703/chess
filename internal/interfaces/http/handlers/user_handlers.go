@@ -1,8 +1,8 @@
 package handlers
 
 import (
-	"awesomeProject/internal/domain/models"
 	"encoding/json"
+	"github.com/Slautin1703/games/internal/domain/models"
 	"net/http"
 )
 

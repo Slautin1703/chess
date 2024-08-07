@@ -1,11 +1,11 @@
 package handlers
 
 import (
-	"awesomeProject/internal/domain/models"
-	"awesomeProject/internal/infrastructure/db"
 	"database/sql"
 	"encoding/json"
 	"fmt"
+	"github.com/Slautin1703/games/internal/domain/models"
+	"github.com/Slautin1703/games/internal/infrastructure/db"
 	"github.com/golang-jwt/jwt/v5"
 	"golang.org/x/crypto/bcrypt"
 	"net/http"

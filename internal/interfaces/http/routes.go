@@ -1,7 +1,7 @@
 package http
 
 import (
-	"awesomeProject/internal/interfaces/http/handlers"
+	"github.com/Slautin1703/games/internal/interfaces/http/handlers"
 	"net/http"
 )
 

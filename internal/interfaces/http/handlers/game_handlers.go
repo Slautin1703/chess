@@ -1,9 +1,9 @@
 package handlers
 
 import (
-	"awesomeProject/internal/domain/models"
-	"awesomeProject/internal/infrastructure/db"
 	"encoding/json"
+	"github.com/Slautin1703/games/internal/domain/models"
+	"github.com/Slautin1703/games/internal/infrastructure/db"
 	"net/http"
 	"time"
 )

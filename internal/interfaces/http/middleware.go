@@ -1,11 +1,11 @@
 package http
 
 import (
-	"awesomeProject/internal/domain/models"
-	"awesomeProject/internal/infrastructure/db"
 	"context"
 	"database/sql"
 	"fmt"
+	"github.com/Slautin1703/games/internal/domain/models"
+	"github.com/Slautin1703/games/internal/infrastructure/db"
 	"github.com/golang-jwt/jwt/v5"
 	"net/http"
 	"os"

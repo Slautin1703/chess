@@ -1,4 +1,5 @@
-module awesomeProject
+module github.com/Slautin1703/games
+
 
 go 1.22
 

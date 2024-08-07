@@ -1,13 +1,13 @@
 package main
 
 import (
-	db2 "awesomeProject/internal/infrastructure/db"
-	"awesomeProject/internal/infrastructure/redis"
-	httpInterfaces "awesomeProject/internal/interfaces/http"
-	"awesomeProject/internal/usecases"
-	"awesomeProject/shared/config"
 	"database/sql"
 	"fmt"
+	db2 "github.com/Slautin1703/games/internal/infrastructure/db"
+	"github.com/Slautin1703/games/internal/infrastructure/redis"
+	httpInterfaces "github.com/Slautin1703/games/internal/interfaces/http"
+	"github.com/Slautin1703/games/internal/usecases"
+	"github.com/Slautin1703/games/shared/config"
 	"log"
 	"net/http"
 )
