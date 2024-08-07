@@ -6,6 +6,7 @@ import (
 	"github.com/Slautin1703/games/config"
 
 	//"github.com/Slautin1703/chess/shared/config"
+	//test
 	db2 "github.com/Slautin1703/games/internal/infrastructure/db"
 	"github.com/Slautin1703/games/internal/infrastructure/redis"
 	httpInterfaces "github.com/Slautin1703/games/internal/interfaces/http"
