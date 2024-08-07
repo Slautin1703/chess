@@ -3,11 +3,13 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	"github.com/Slautin1703/chess/shared/config"
 	db2 "github.com/Slautin1703/games/internal/infrastructure/db"
 	"github.com/Slautin1703/games/internal/infrastructure/redis"
 	httpInterfaces "github.com/Slautin1703/games/internal/interfaces/http"
 	"github.com/Slautin1703/games/internal/usecases"
-	"github.com/Slautin1703/games/shared/config"
+
+	//"github.com/Slautin1703/games/shared/config"
 	"log"
 	"net/http"
 )
