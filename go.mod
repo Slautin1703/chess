@@ -11,7 +11,6 @@ require (
 	github.com/lib/pq v1.10.9
 	go.mongodb.org/mongo-driver v1.16.0
 	golang.org/x/crypto v0.24.0
-	//github.com/Slautin1703/chess v0.10.0
 )
 
 require (
