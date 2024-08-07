@@ -1,4 +1,4 @@
-module shared
+module github.com/Slautin1703/chess/shared
 
 go 1.22
 
