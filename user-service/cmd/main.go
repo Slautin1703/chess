@@ -3,9 +3,9 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	"github.com/Slautin1703/games/shared/config"
 	"log"
 	"net/http"
-	"user-service/common/config"
 	db2 "user-service/internal/infrastructure/db"
 	"user-service/internal/infrastructure/redis"
 	httpInterfaces "user-service/internal/interfaces/http"
