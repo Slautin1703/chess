@@ -2,11 +2,9 @@ package main
 
 import (
 	"database/sql"
-	"fmt"
-	db2 "github.com/Slautin1703/games/internal/infrastructure/db"
-	"github.com/Slautin1703/games/internal/infrastructure/redis"
-	httpInterfaces "github.com/Slautin1703/games/internal/interfaces/http"
-	"github.com/Slautin1703/games/internal/usecases"
+	httpInterfaces "game-service/internal/delivery/http"
+	db2 "game-service/internal/infrastructure/db"
+	"game-service/internal/infrastructure/redis"
 	"github.com/Slautin1703/games/shared/config"
 	"log"
 	"net/http"
@@ -45,15 +43,8 @@ func main() {
 		}
 	}()
 
-	db2.RunPostgresMigrations(cfg.DatabaseURL)
+	//db2.RunPostgresMigrations(cfg.DatabaseURL)
 
-	//usecases.AddPlayerToQueue(rdb, "3")
-
-	players, err := usecases.GetNextPlayerFromQueue(rdb)
-
-	fmt.Println(players)
-
-	// Set up routes
 	router := httpInterfaces.NewRouter()
 
 	corsRouter := httpInterfaces.CORSMiddleware(router)

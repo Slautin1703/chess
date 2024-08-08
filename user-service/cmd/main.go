@@ -2,14 +2,11 @@ package main
 
 import (
 	"database/sql"
-	"fmt"
 	"github.com/Slautin1703/games/shared/config"
 	"log"
 	"net/http"
 	db2 "user-service/internal/infrastructure/db"
-	"user-service/internal/infrastructure/redis"
 	httpInterfaces "user-service/internal/interfaces/http"
-	"user-service/internal/usecases"
 )
 
 func main() {
@@ -18,13 +15,6 @@ func main() {
 	if err != nil {
 		log.Fatalf("could not load config: %v", err)
 	}
-
-	// Initialize MongoDB
-	mongoDB, err := db2.ConnectToMongoDB(cfg.MongoURI)
-	if err != nil {
-		log.Fatalf("could not connect to MongoDB: %v", err)
-	}
-	defer mongoDB.Disconnect()
 
 	// Initialize database connection
 	pgDB, err := db2.ConnectToPostgres(cfg.DatabaseURL)
@@ -38,20 +28,7 @@ func main() {
 		}
 	}(pgDB)
 
-	rdb := redis.NewRedisClient()
-	defer func() {
-		if err := rdb.Close(); err != nil {
-			log.Fatalf("Failed to close Redis client: %v", err)
-		}
-	}()
-
 	db2.RunPostgresMigrations(cfg.DatabaseURL)
-
-	//usecases.AddPlayerToQueue(rdb, "3")
-
-	players, err := usecases.GetNextPlayerFromQueue(rdb)
-
-	fmt.Println(players)
 
 	// Set up routes
 	router := httpInterfaces.NewRouter()

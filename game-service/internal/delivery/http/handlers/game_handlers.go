@@ -2,8 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
-	"github.com/Slautin1703/games/internal/domain/models"
-	"github.com/Slautin1703/games/internal/infrastructure/db"
+	"game-service/internal/infrastructure/db"
 	"net/http"
 	"time"
 )
@@ -15,11 +14,11 @@ func CreateGameHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	_, ok := r.Context().Value("user").(models.User)
-	if !ok {
-		http.Error(w, "Unauthorized", http.StatusUnauthorized)
-		return
-	}
+	//_, ok := r.Context().Value("user").(models.User)
+	//if !ok {
+	//	http.Error(w, "Unauthorized", http.StatusUnauthorized)
+	//	return
+	//}
 
 	var body struct {
 		GameType string `json:"type"`

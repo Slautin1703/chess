@@ -2,8 +2,8 @@ package handlers
 
 import (
 	"encoding/json"
-	"github.com/Slautin1703/games/internal/domain/models"
 	"net/http"
+	"user-service/internal/domain/models"
 )
 
 func GetUserHandler(w http.ResponseWriter, r *http.Request) {
